@@ -71,8 +71,8 @@ UNNEST(r.review_data.reviews) AS t(review_item);
 ```
 
 
-Part 2 — Analytical Insights
-1. Top 20 Games by Number of Reviews
+## Part 2 — Analytical Insights
+### 1. Top 20 Games by Number of Reviews
 
 ```sql
 SELECT 
@@ -87,7 +87,7 @@ LIMIT 20;
 
 Interpretation: The top games in this dataset (including Rust and Command & Conquer) are all capped at exactly 100 reviews. This indicates the dataset scraping process likely enforced a hard limit of 100 reviews per game ID.
 
-2. Distribution of Game Release Years
+### 2. Distribution of Game Release Years
 
 ```sql
 SELECT 
@@ -102,7 +102,7 @@ ORDER BY 1 DESC;
 
 Interpretation: The dataset is highly skewed toward recent releases, with the years 2024 and 2025 accounting for the vast majority of entries. This suggests the dataset is focused on "Upcoming" or "New Release" tabs rather than the historical Steam back catalog.
 
-3. Average Price by Genre
+### 3. Average Price by Genre
 
 ```sql
 SELECT 
@@ -117,7 +117,7 @@ LIMIT 10;
 
 Interpretation: Professional software categories like "Animation & Modeling" ($36.84) and "Design & Illustration" ($21.36) have a significantly higher average price point than mass-market entertainment genres like "Simulation" ($14.77) or "Adventure" ($16.00).
 
-4. Most Common Tags (Categories)
+### 4. Most Common Tags (Categories)
 
 ```sql
 SELECT 
