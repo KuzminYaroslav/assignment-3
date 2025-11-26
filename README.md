@@ -91,7 +91,6 @@ Interpretation: The top games in this dataset (including Rust and Command & Conq
 
 ```sql
 SELECT 
-    -- Extract the last 4 characters (Year) from the date string
     RIGHT(release_date, 4) AS release_year,
     COUNT(*) AS game_count
 FROM games_clean
