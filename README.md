@@ -7,14 +7,14 @@ We first load the raw compressed JSON files. To handle the large single-object s
 -- 1. Load Raw Games Data from GitHub
 CREATE OR REPLACE TABLE raw_games_source AS 
 SELECT * FROM read_json_auto(
-    '[https://github.com/vintagedon/steam-dataset-2025/raw/main/data/01_raw/steam_2025_5k-dataset-games_20250831.json.gz](https://github.com/vintagedon/steam-dataset-2025/raw/main/data/01_raw/steam_2025_5k-dataset-games_20250831.json.gz)',
+    '(https://github.com/vintagedon/steam-dataset-2025/raw/main/data/01_raw/steam_2025_5k-dataset-games_20250831.json.gz)',
     maximum_object_size=268435456
 );
 
 -- 2. Load Raw Reviews Data from GitHub
 CREATE OR REPLACE TABLE raw_reviews_source AS 
 SELECT * FROM read_json_auto(
-    '[https://github.com/vintagedon/steam-dataset-2025/raw/main/data/01_raw/steam_2025_5k-dataset-reviews_20250901.json.gz](https://github.com/vintagedon/steam-dataset-2025/raw/main/data/01_raw/steam_2025_5k-dataset-reviews_20250901.json.gz)', 
+    '(https://github.com/vintagedon/steam-dataset-2025/raw/main/data/01_raw/steam_2025_5k-dataset-reviews_20250901.json.gz)', 
     maximum_object_size=268435456
 );
 ```
