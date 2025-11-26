@@ -115,7 +115,7 @@ ORDER BY 2 DESC
 LIMIT 10;
 ```
 
-Interpretation: Professional software categories like "Animation & Modeling" (~$36.84) and "Design & Illustration" (~$21.36) have a significantly higher average price point than mass-market entertainment genres like "Simulation" (~$14.77) or "Adventure" (~$16.00).
+Interpretation: Professional software categories like "Animation & Modeling" ($36.84) and "Design & Illustration" ($21.36) have a significantly higher average price point than mass-market entertainment genres like "Simulation" (~$14.77) or "Adventure" (~$16.00).
 
 4. Most Common Tags (Categories)
 
