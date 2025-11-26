@@ -73,8 +73,8 @@ UNNEST(r.review_data.reviews) AS t(review_item);
 
 Part 2 — Analytical Insights
 1. Top 20 Games by Number of Reviews
-SQL
 
+```sql
 SELECT 
     g.game_name,
     COUNT(r.review_id) AS review_count
@@ -83,11 +83,13 @@ JOIN games_clean g ON r.appid = g.appid
 GROUP BY g.game_name
 ORDER BY review_count DESC
 LIMIT 20;
+```
+
 Interpretation: The top games in this dataset (including Rust and Command & Conquer) are all capped at exactly 100 reviews. This indicates the dataset scraping process likely enforced a hard limit of 100 reviews per game ID.
 
 2. Distribution of Game Release Years
-SQL
 
+```sql
 SELECT 
     -- Extract the last 4 characters (Year) from the date string
     RIGHT(release_date, 4) AS release_year,
@@ -96,11 +98,13 @@ FROM games_clean
 WHERE release_date IS NOT NULL
 GROUP BY 1
 ORDER BY 1 DESC;
+```
+
 Interpretation: The dataset is highly skewed toward recent releases, with the years 2024 and 2025 accounting for the vast majority of entries. This suggests the dataset is focused on "Upcoming" or "New Release" tabs rather than the historical Steam back catalog.
 
 3. Average Price by Genre
-SQL
 
+```sql
 SELECT 
     genre.description AS genre_name,
     ROUND(AVG(price), 2) AS avg_price
@@ -109,11 +113,13 @@ UNNEST(genres) AS t(genre)
 GROUP BY 1
 ORDER BY 2 DESC
 LIMIT 10;
+```
+
 Interpretation: Professional software categories like "Animation & Modeling" (~$36.84) and "Design & Illustration" (~$21.36) have a significantly higher average price point than mass-market entertainment genres like "Simulation" (~$14.77) or "Adventure" (~$16.00).
 
 4. Most Common Tags (Categories)
-SQL
 
+```sql
 SELECT 
     category.description AS tag_name,
     COUNT(*) AS tag_count
@@ -122,4 +128,6 @@ UNNEST(categories) AS t(category)
 GROUP BY 1
 ORDER BY 2 DESC
 LIMIT 10;
+```
+
 Interpretation: "Single-player" is the most ubiquitous tag, appearing in over 6,600 records. Social features like "Family Sharing" and "Steam Achievements" follow closely, highlighting that platform integration features are now standard for most modern releases.
