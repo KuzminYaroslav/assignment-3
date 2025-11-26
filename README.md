@@ -130,3 +130,10 @@ LIMIT 10;
 ```
 
 Interpretation: "Single-player" is the most ubiquitous tag, appearing in over 6,600 records. Social features like "Family Sharing" and "Steam Achievements" follow closely, highlighting that platform integration features are now standard for most modern releases.
+
+## Part 4
+
+<img width="1200" height="600" alt="Figure_1" src="https://github.com/user-attachments/assets/b5b4a7fe-91df-48b9-8538-447d9597ede0" />
+
+The visualization highlights a clear "utility premium" on Steam. While the platform is primarily known for gaming, the categories with the highest average price points are Animation & Modeling ($36) and Design & Illustration ($21). These represent professional software tools rather than traditional games. Among actual gaming genres, Simulation and Adventure titles command higher prices (~$14-$16), likely due to the complexity and replayability associated with these genres, whereas casual or action titles tend to be priced lower to capture a wider audience.
+
