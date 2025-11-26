@@ -39,15 +39,11 @@ CREATE OR REPLACE TABLE games_clean AS
 SELECT
 g.appid,
 g.app_details.data.name AS game_name,
--- Handle price: check for NULLs and convert cents to dollars
 COALESCE(g.app_details.data.price_overview.final / 100.0, 0) AS price,
 g.app_details.data.price_overview.currency AS currency,
 g.app_details.data.release_date.date AS release_date,
--- Keep genres as a struct list for now
 g.app_details.data.genres AS genres,
--- Developers is a simple list of strings
 g.app_details.data.developers AS developers,
--- Categories is a list of structs
 g.app_details.data.categories AS categories
 FROM (
 -- Unnest from the raw source table we just created
@@ -58,19 +54,14 @@ FROM raw_games_source
 CREATE OR REPLACE TABLE reviews_clean AS
 SELECT
 r.appid,
--- Now 'review_item' refers to the column (struct), so dot notation works
 review_item.recommendationid AS review_id,
 review_item.author.steamid AS author_steamid,
 review_item.voted_up AS is_positive,
 review_item.votes_up AS votes_helpful,
-    -- Ideally cast this to DOUBLE as JSON can sometimes mix strings/numbers
     TRY_CAST(review_item.weighted_vote_score AS DOUBLE) AS vote_score,
-    
     review_item.review AS review_text,
     to_timestamp(review_item.timestamp_created) AS created_at
-
 FROM (
--- 1. Unnest the root 'reviews' list
 SELECT unnest(reviews) as r
 FROM raw_reviews_source
 ),
@@ -93,7 +84,6 @@ LIMIT 20;
 
 -- 2.2
 SELECT
--- Extract the last 4 characters as the year (e.g., from "Oct 23, 2024")
 RIGHT(release_date, 4) AS release_year,
 COUNT(*) AS game_count
 FROM games_clean
